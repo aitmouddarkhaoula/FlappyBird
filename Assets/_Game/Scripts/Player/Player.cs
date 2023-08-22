@@ -5,7 +5,6 @@ using UnityEngine;
 
 public class Player : MonoBehaviour
 {
-    [SerializeField]private float playerSpeed = 5f;
     [SerializeField]private float jumpPower = 1f;
     [SerializeField]private int jumpCount = 1;
     [SerializeField]private float jumpDuration = 0.5f;
@@ -14,6 +13,7 @@ public class Player : MonoBehaviour
     void Start()
     {
         playerRB = GetComponent<Rigidbody2D>();
+        
     }
 
     // Update is called once per frame
@@ -22,11 +22,14 @@ public class Player : MonoBehaviour
         if (Input.GetMouseButtonDown(0))
         {
 
-            StartCoroutine(Jump());
+            transform.DOJump(transform.position + Vector3.up, jumpPower, jumpCount, jumpDuration);
         }
+        else
+        {
         
-        transform.Translate(Vector3.right * Time.deltaTime * playerSpeed);
-        playerRB.bodyType = RigidbodyType2D.Kinematic;
+            
+        }
+        //playerRB.bodyType = RigidbodyType2D.Kinematic;
        
     }
 
