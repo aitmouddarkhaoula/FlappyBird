@@ -26,7 +26,7 @@ public class Player : MonoBehaviour
         }
         
         transform.Translate(Vector3.right * Time.deltaTime * playerSpeed);
-      
+        playerRB.bodyType = RigidbodyType2D.Kinematic;
        
     }
 
@@ -35,6 +35,6 @@ public class Player : MonoBehaviour
         playerRB.bodyType = RigidbodyType2D.Dynamic;
         transform.DOJump(transform.position + Vector3.up, jumpPower, jumpCount, jumpDuration);
         yield return new WaitForSeconds(jumpDuration);
-        playerRB.bodyType = RigidbodyType2D.Kinematic;
+        
     }
 }
