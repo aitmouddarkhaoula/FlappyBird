@@ -1,5 +1,7 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
+using GameSystems;
 using UnityEngine;
 
 public class BackgroundMovement : MonoBehaviour
@@ -14,6 +16,14 @@ public class BackgroundMovement : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        transform.Translate(Vector3.left * Time.deltaTime * playerSpeed);
+        if (GameStateSystem.GetState() == GameState.Playing)
+        {
+            transform.Translate(Vector3.left * Time.deltaTime * playerSpeed);
+        }
+    }
+
+    public void Reset()
+    {
+        transform.position = new Vector3(8.6f,0,0);
     }
 }

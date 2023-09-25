@@ -2,11 +2,17 @@ using System;
 using System.Collections;
 using GameSystems;
 using UnityEngine;
+using UnityEngine.UIElements;
 
 namespace GameSystems {
     public class UISystem : Singleton<UISystem> {
+        
         [SerializeField] private GameObject _inGamePanel;
-        [SerializeField] private GameObject _pausePanel;
+        [SerializeField] private GameObject _gameOverPanel;
+        [SerializeField] private GameObject _startMenuPanel;
+        [SerializeField] private GameObject _winPanel;
+
+      
 
         private bool _isInitialised;
 
@@ -22,16 +28,24 @@ namespace GameSystems {
                 case GameState.Playing:
                     SetActivePanel(inGamePanel_: true);
                     break;
-                case GameState.Paused:
-                    SetActivePanel(pausePanel_: true);
+                case GameState.GameOver:
+                    SetActivePanel(gameOverPanel_: true);
+                    break;
+                case GameState.StartingMenu:
+                    SetActivePanel(startMenuPanel_: true);
+                    break;
+                case GameState.GameWon:
+                    SetActivePanel(startMenuPanel_: true);
                     break;
             }
         }
 
 
-        private void SetActivePanel(bool inGamePanel_ = false, bool pausePanel_ = false) {
+        private void SetActivePanel(bool inGamePanel_ = false, bool gameOverPanel_ = false, bool startMenuPanel_ = false, bool winPanel_ = false) {
             _inGamePanel.SetActive(inGamePanel_);
-            _pausePanel.SetActive(pausePanel_);
+            _gameOverPanel.SetActive(gameOverPanel_);
+            _startMenuPanel.SetActive(startMenuPanel_);
+            _winPanel.SetActive(winPanel_);
         }
 
 

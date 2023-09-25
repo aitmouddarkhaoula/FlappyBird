@@ -4,9 +4,8 @@ namespace GameSystems {
     public enum GameState {
         StartingMenu,
         Playing,
-        Paused,
-        GameWon,
         GameOver,
+        GameWon,
     }
     
     public static class GameStateSystem {
