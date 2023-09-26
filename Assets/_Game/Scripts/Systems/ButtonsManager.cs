@@ -14,7 +14,7 @@ public class ButtonsManager : MonoBehaviour
     {
         _startGameButton.onClick.AddListener(StartGame);
         _restartGameButton.onClick.AddListener(RestartGame);
-        _nextLevel.onClick.AddListener(NextLevel);
+        _nextLevel.onClick.AddListener(RestartGame);
     }
 
     private void NextLevel()

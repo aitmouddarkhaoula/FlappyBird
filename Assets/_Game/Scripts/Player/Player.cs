@@ -15,11 +15,14 @@ public class Player : MonoBehaviour
     [SerializeField]private float jumpDuration = 0.5f;
     [SerializeField]private Rigidbody2D playerRB;
     [SerializeField]private Vector3 startposition;
+
+    private Animator playerAnimator;
     // Start is called before the first frame update
     void Start()
     {
         transform.right = Vector3.right;
         startposition = Vector3.zero;
+        playerAnimator = GetComponent<Animator>();
         playerRB = GetComponent<Rigidbody2D>();
         playerRB.bodyType = RigidbodyType2D.Static;
         
@@ -36,6 +39,7 @@ public class Player : MonoBehaviour
             playerRB.bodyType = RigidbodyType2D.Dynamic;
             if (Input.GetMouseButtonDown(0))
             {
+                playerAnimator.SetBool("Fly", true);
                 //transform.DOJump(transform.position + Vector3.up*0.5f, jumpPower, jumpCount, jumpDuration);
                 var vel = playerRB.velocity;
                 vel.y = 0;
@@ -62,6 +66,7 @@ public class Player : MonoBehaviour
             if (other.gameObject.CompareTag("Obstacle"))
             {
                 GameStateSystem.SetState(GameState.GameOver);
+                playerAnimator.SetBool("Fly", false);
             }
      }
 

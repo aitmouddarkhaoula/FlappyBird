@@ -35,7 +35,7 @@ namespace GameSystems {
                     SetActivePanel(startMenuPanel_: true);
                     break;
                 case GameState.GameWon:
-                    SetActivePanel(startMenuPanel_: true);
+                    SetActivePanel(winPanel_: true);
                     break;
             }
         }
